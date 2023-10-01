@@ -17,6 +17,10 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
             }
             i++
         }
+        if((this.axis_y.size/2) != 0){
+            this.axis_x.removeAt(this.axis_x.size-1)
+            this.axis_y.removeAt(this.axis_y.size-1)
+        }
     }
 
     fun lerArquivo() {
