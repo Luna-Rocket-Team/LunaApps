@@ -6,6 +6,7 @@ fun main(args: Array<String>) {
     println("Impulso Total: "+curva.impulsoTotal())
     println("Empuxo Máximo: "+curva.empuxoMax())
     println("Empuxo Médio: "+curva.empuxoMedio())
+    println("Velocidade Media dos Gases: "+curva.velMediaGases())
 
 }
 
