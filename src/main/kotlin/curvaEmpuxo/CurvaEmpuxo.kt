@@ -73,4 +73,8 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
     fun velMediaGases(): Double{
         return this.impulsoTotal()/this.prop_massa
     }
+
+    fun impulsoEpecificoMedio():Double{
+        return this.impulsoTotal()/(this.prop_massa*this.gravidade)
+    }
 }
