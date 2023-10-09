@@ -5,6 +5,7 @@ fun main(args: Array<String>) {
     curva.refinaDados()
     println("Impulso Total: "+curva.impulsoTotal())
     println("Empuxo Máximo: "+curva.empuxoMax())
+    println("Empuxo Médio: "+curva.empuxoMedio())
 
 }
 
