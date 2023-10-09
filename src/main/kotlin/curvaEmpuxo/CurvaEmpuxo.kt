@@ -11,9 +11,10 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
         lerArquivo()
         var i: Int = 0
         while(this.axis_y.size > i) {
-            if (this.axis_y[i] < 0.05) {
+            if (this.axis_y[i] < 0.050) {
                 this.axis_x.removeAt(i)
                 this.axis_y.removeAt(i)
+                i--
             }
             i++
         }
@@ -47,4 +48,17 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
                 println("Ocorreu um erro ao ler o arquivo TXT: ${e.message}")
             }
         }
+
+    fun impulsoTotal(): Double{
+
+        var n: Int = 0
+        var soma: Double = 0.0
+        val h: Double = (this.axis_x[this.axis_x.size-1] - this.axis_x[0]) / (this.axis_x.size-1)
+
+        while(n < this.axis_x.size-3){
+            soma += (3*h/8 * (this.axis_y[n] + 3*this.axis_y[n+1] + 3*this.axis_y[n+2] + this.axis_y[n+3]))
+            n+= 3
+        }
+        return soma
+    }
 }
