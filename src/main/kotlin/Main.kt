@@ -8,6 +8,7 @@ fun main(args: Array<String>) {
     println("Empuxo Médio: "+curva.empuxoMedio())
     println("Velocidade Media dos Gases: "+curva.velMediaGases())
     println("Impulso Específico Médio: "+curva.impulsoEpecificoMedio())
+    println("Fluxo de Médio de Massa: "+ curva.fluxoMassaMedio())
 
 }
 

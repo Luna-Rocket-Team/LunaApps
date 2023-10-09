@@ -74,7 +74,11 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
         return this.impulsoTotal()/this.prop_massa
     }
 
-    fun impulsoEpecificoMedio():Double{
+    fun impulsoEpecificoMedio(): Double{
         return this.impulsoTotal()/(this.prop_massa*this.gravidade)
+    }
+
+    fun fluxoMassaMedio(): Double{
+        return this.prop_massa/(this.axis_x[this.axis_x.size-1] - this.axis_x[0])
     }
 }
