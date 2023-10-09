@@ -61,4 +61,8 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
         }
         return soma
     }
+
+    fun empuxoMax(): Double{
+        return this.axis_y.max()
+    }
 }
