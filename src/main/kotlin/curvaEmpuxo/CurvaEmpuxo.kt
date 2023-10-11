@@ -88,6 +88,11 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
     }
 
     fun relacaoEmpuxoMaxMed(): Double{
-        return this.empuxoMax()/this.empuxoMedio()
+        return this.axis_y.max()/this.empuxoMedio()
     }
+
+    fun relacaoEmpuxoMinMax(): Double{
+        return this.axis_y.min()/this.axis_y.max()
+    }
+
 }
