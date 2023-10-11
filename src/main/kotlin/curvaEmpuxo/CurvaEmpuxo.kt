@@ -99,6 +99,10 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
         return this.axis_x[0]
     }
 
+    fun tempoFinalQueima(): Double{
+        return this.axis_x[this.axis_x.size-1]
+    }
+
     fun relacaoEmpuxoMaxMed(): Double{
         return this.axis_y.max()/this.empuxoMedio()
     }
