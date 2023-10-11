@@ -82,4 +82,8 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
     fun fluxoMassaMedio(): Double{
         return this.prop_massa/(this.axis_x[this.axis_x.size-1] - this.axis_x[0])
     }
+    
+    fun tempoQueima(): Double{
+        return this.axis_x[this.axis_x.size-1] - this.axis_x[0]
+    }
 }
