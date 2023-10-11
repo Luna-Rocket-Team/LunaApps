@@ -5,13 +5,14 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
 
     private val gravidade = 9.80665
     private var axis_x = mutableListOf<Double>()
-    var axis_y = mutableListOf<Double>()
+    private var axis_y = mutableListOf<Double>()
+    private var impulsoTotal: Double = 0.0
 
     fun refinaDados() {
         lerArquivo()
         var i: Int = 0
         while(this.axis_y.size > i) {
-            if (this.axis_y[i] < 0.050) {
+            if (this.axis_y[i] < this.min_empuxo) {
                 this.axis_x.removeAt(i)
                 this.axis_y.removeAt(i)
                 i--
@@ -52,14 +53,14 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
     fun impulsoTotal(): Double{
 
         var n: Int = 0
-        var soma: Double = 0.0
+        this.impulsoTotal = 0.0
         val h: Double = (this.axis_x[this.axis_x.size-1] - this.axis_x[0]) / (this.axis_x.size-1)
 
         while(n < this.axis_x.size-3){
-            soma += (3*h/8 * (this.axis_y[n] + 3*this.axis_y[n+1] + 3*this.axis_y[n+2] + this.axis_y[n+3]))
+            this.impulsoTotal += (3*h/8 * (this.axis_y[n] + 3*this.axis_y[n+1] + 3*this.axis_y[n+2] + this.axis_y[n+3]))
             n+= 3
         }
-        return soma
+        return this.impulsoTotal
     }
 
     fun empuxoMax(): Double{
@@ -67,15 +68,15 @@ class CurvaEmpuxo(var file: String, var min_empuxo: Double, var prop_massa: Doub
     }
 
     fun empuxoMedio(): Double{
-        return this.impulsoTotal()/(this.axis_x[this.axis_x.size-1] - this.axis_x[0])
+        return this.impulsoTotal/(this.axis_x[this.axis_x.size-1] - this.axis_x[0])
     }
 
     fun velMediaGases(): Double{
-        return this.impulsoTotal()/this.prop_massa
+        return this.impulsoTotal/this.prop_massa
     }
 
     fun impulsoEpecificoMedio(): Double{
-        return this.impulsoTotal()/(this.prop_massa*this.gravidade)
+        return this.impulsoTotal/(this.prop_massa*this.gravidade)
     }
 
     fun fluxoMassaMedio(): Double{
